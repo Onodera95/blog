@@ -13,14 +13,18 @@
 include_once('DB.php');
 
 // подключаемся к серверу
-var_dump($db_host);
 $link = mysqli_connect($db_host, $db_user, $db_password, $db_name)
 or die("Ошибка " . mysqli_error($link));
+if($link)
+{
+    echo "Подключено";
+}
+
+echo '<br>';
 
 // выполняем операции с базой данных
 $query ="SELECT * FROM category";
 $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-var_dump($result);
 if($result)
 {
     echo "Выполнение запроса прошло успешно";
